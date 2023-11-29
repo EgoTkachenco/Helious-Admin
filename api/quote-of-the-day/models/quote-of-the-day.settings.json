@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "quote_of_the_days",
+  "info": {
+    "name": "Quote of the day"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quote": {
+      "model": "quotes"
+    }
+  }
+}

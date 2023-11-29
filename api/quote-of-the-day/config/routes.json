@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/quote-of-the-day",
+      "handler": "quote-of-the-day.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/quote-of-the-day",
+      "handler": "quote-of-the-day.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/quote-of-the-day",
+      "handler": "quote-of-the-day.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
