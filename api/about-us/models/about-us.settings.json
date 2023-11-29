@@ -2,7 +2,8 @@
   "kind": "singleType",
   "collectionName": "about_uses",
   "info": {
-    "name": "About Us"
+    "name": "About Us",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -16,8 +17,7 @@
       "required": true
     },
     "description": {
-      "type": "text",
-      "required": true
+      "type": "richtext"
     }
   }
 }
