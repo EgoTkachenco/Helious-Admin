@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Cron config that gives you an opportunity
@@ -12,10 +12,12 @@
 
 module.exports = {
   /**
-   * Simple example.
-   * Every monday at 1am.
+   * Every day at 1am.
    */
-  // '0 1 * * 1': () => {
-  //
-  // }
+  "0 1 * * *": () => {
+    strapi.services["quote-of-the-day"].updateRandomQuote();
+  },
+  // "0 * * * * *": () => {
+  //   console.log("cron test");
+  // },
 };
