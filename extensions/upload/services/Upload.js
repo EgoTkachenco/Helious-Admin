@@ -109,17 +109,14 @@ module.exports = {
       throw e;
     }
 
-    const isAlac =
-      file.name.split(".").slice(-1)[0] === "alac" &&
-      file.type === "application/octet-stream";
-    const isMp3 =
-      file.type.search("audio") !== -1 &&
-      file.type.replace("audio/", "") === "mpeg";
-    const isFlac =
-      file.type.search("audio") !== -1 &&
-      file.type.replace("audio/", "") === "flac";
-    if (!(isAlac || isMp3 || isFlac)) {
-      throw strapi.errors.badRequest("Bad audio format");
+    if (file.type === "application/octet-stream") {
+      if (file.name.split(".").slice(-1)[0] !== "alac")
+        throw strapi.errors.badRequest("Bad audio format");
+    }
+
+    if (file.type.search("audio") !== -1) {
+      if (!["mpeg", "flac"].includes(file.type.replace("audio/", "")))
+        throw strapi.errors.badRequest("Bad audio format");
     }
 
     const { optimize } = strapi.plugins.upload.services["image-manipulation"];
