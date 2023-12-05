@@ -6,7 +6,7 @@ module.exports = {
     let result = await strapi.connections.default.raw(sql);
     if (!result[0]) return;
     const quote = result[0][0];
-    console.log(quote);
+    console.log(quote.id);
     if (!quote) return;
 
     const quote_of_the_day = await this.find({}, []);
