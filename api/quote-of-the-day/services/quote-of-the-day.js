@@ -4,10 +4,8 @@ module.exports = {
   async updateRandomQuote() {
     const sql = `SELECT * FROM quotes ORDER BY RAND() LIMIT 1;`;
     let result = await strapi.connections.default.raw(sql);
-    result = result.toJSON();
-    console.log(result);
     if (!result[0]) return;
-    const quote = result[0];
+    const quote = result[0][0];
     console.log(quote);
     if (!quote) return;
 
