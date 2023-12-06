@@ -1,8 +1,9 @@
-'use strict';
+"use strict";
+const _ = require("lodash");
 
-/**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
- * to customize this controller
- */
-
-module.exports = {};
+module.exports = {
+  async find(ctx) {
+    const entity = await strapi.services["about-us"].find();
+    return _.pick(entity, ["title", "description"]);
+  },
+};

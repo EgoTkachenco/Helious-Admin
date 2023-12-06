@@ -11,5 +11,5 @@
  */
 
 module.exports = () => {
-  strapi.services["quote-of-the-day"].updateRandomQuote();
+  // strapi.services["quote-of-the-day"].updateRandomQuote();
 };

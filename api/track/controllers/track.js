@@ -1,8 +1,44 @@
-'use strict';
+"use strict";
+const _ = require("lodash");
 
-/**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
- * to customize this controller
- */
+module.exports = {
+  async find(ctx) {
+    const entities = await strapi.services.track.find(ctx.query);
 
-module.exports = {};
+    return entities.map((entity) => {
+      entity.preview = entity.preview?.url || "";
+      entity.audio = entity.audio?.url || "";
+      entity.audio_male = entity.audio_male?.url || "";
+      entity.audio_female = entity.audio_female?.url || "";
+      entity.video = entity.video?.url || "";
+      return _.pick(entity, [
+        "id",
+        "name",
+        "preview",
+        "audio",
+        "audio_male",
+        "audio_female",
+        "video",
+      ]);
+    });
+  },
+
+  async findOne(ctx) {
+    const { id } = ctx.params;
+    const entity = await strapi.services.track.findOne({ id });
+    entity.preview = entity.preview?.url || "";
+    entity.audio = entity.audio?.url || "";
+    entity.audio_male = entity.audio_male?.url || "";
+    entity.audio_female = entity.audio_female?.url || "";
+    entity.video = entity.video?.url || "";
+    return _.pick(entity, [
+      "id",
+      "name",
+      "preview",
+      "audio",
+      "audio_male",
+      "audio_female",
+      "video",
+    ]);
+  },
+};

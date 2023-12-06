@@ -1,8 +1,14 @@
-'use strict';
+"use strict";
+const _ = require("lodash");
 
-/**
- * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
- * to customize this controller
- */
-
-module.exports = {};
+module.exports = {
+  async find(ctx) {
+    let entity = await strapi.services["quote-of-the-day"].find({}, [
+      "quote",
+      "quote.preview",
+    ]);
+    entity = entity.quote;
+    entity.preview = entity.preview?.url || "";
+    return _.pick(entity, ["text", "preview"]);
+  },
+};
