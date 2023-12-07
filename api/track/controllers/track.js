@@ -11,6 +11,7 @@ module.exports = {
       entity.audio_male = entity.audio_male?.url || "";
       entity.audio_female = entity.audio_female?.url || "";
       entity.video = entity.video?.url || "";
+      entity.category = entity.category.id;
       return _.pick(entity, [
         "id",
         "name",
@@ -19,6 +20,7 @@ module.exports = {
         "audio_male",
         "audio_female",
         "video",
+        "category",
       ]);
     });
   },
@@ -31,6 +33,7 @@ module.exports = {
     entity.audio_male = entity.audio_male?.url || "";
     entity.audio_female = entity.audio_female?.url || "";
     entity.video = entity.video?.url || "";
+    entity.category = entity.category.id;
     return _.pick(entity, [
       "id",
       "name",
@@ -39,6 +42,7 @@ module.exports = {
       "audio_male",
       "audio_female",
       "video",
+      "category",
     ]);
   },
 };
