@@ -2,7 +2,7 @@
 
 module.exports = {
   async updateRandomQuote() {
-    const sql = `SELECT * FROM quotes ORDER BY RAND() LIMIT 1;`;
+    const sql = `SELECT * FROM quotes WHERE published_at IS NOT NULL ORDER BY RAND() LIMIT 1;`;
     let result = await strapi.connections.default.raw(sql);
     if (!result[0] || !result[0][0]) return;
 
